@@ -4,7 +4,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class TestCreate {
+import java.util.List;
+
+public class TestReadFromDB {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration().configure("/hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
@@ -12,13 +14,19 @@ public class TestCreate {
 
         try {
             Session session = factory.getCurrentSession();
-            Employee emp = new Employee("Oleg", "Mak", "IT", 90_000);
             session.beginTransaction();
-            session.save(emp);
+
+            List<Employee> emps = session.createQuery("from Employee where name = 'Oleg'" +
+                            "AND salary>45000")
+                            .getResultList();
+
+            for (Employee employee : emps) {
+                System.out.println(employee);
+            }
+
             session.getTransaction().commit();
 
             System.out.println("Done!");
-            System.out.println(emp);
         } finally {
             factory.close();
         }
