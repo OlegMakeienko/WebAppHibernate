@@ -43,6 +43,14 @@ public class Employees {
                 '}';
     }
 
+    public Detail getEmpDetail() {
+        return empDetail;
+    }
+
+    public void setEmpDetail(Detail empDetail) {
+        this.empDetail = empDetail;
+    }
+
     public int getId() {
         return id;
     }
