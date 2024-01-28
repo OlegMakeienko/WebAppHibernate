@@ -14,7 +14,7 @@ public class TestDelete {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
 
-//            Employee emp = session.get(Employee.class, 1);
+//            Employees emp = session.get(Employees.class, 1);
 //            session.delete(emp);
 
             session.createQuery("delete Employee where name='Oleg'")

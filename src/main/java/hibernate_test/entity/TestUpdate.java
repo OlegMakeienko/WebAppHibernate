@@ -13,7 +13,7 @@ public class TestUpdate {
         try {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
-//            Employee emp = session.get(Employee.class, 3);
+//            Employees emp = session.get(Employees.class, 3);
 //            emp.setSalary(50_000);
 
             session.createQuery("update Employee set salary=60000 where name='Oleg'")
